@@ -8,7 +8,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     //widget的主要工作是提供一个build()方法来描述如何根据其他较低级别的widget来显示自己
-    final wordPair = new WordPair.random();
+//    final wordPair = new WordPair.random();
     return new MaterialApp(
       title: 'Welcome to Flutter',
 //      theme: new ThemeData(
@@ -22,9 +22,28 @@ class MyApp extends StatelessWidget {
         body: new Center(
           //本示例中的body的widget树中包含了一个Center widget, Center widget又包含一个 Text 子widget。 Center widget可以将其子widget树对其到屏幕中心
 //          child: new Text('hello world'),
-          child: new Text(wordPair.asPascalCase),
+//          child: new Text(wordPair.asPascalCase),
+          child: new RandomWords(),
         ),
       ),
     );
+  }
+}
+
+class RandomWords extends StatefulWidget {
+  @override
+  State<StatefulWidget> createState() {
+    return new RandomWordsState();
+  }
+//  @override
+//  createState() => new RandomWordsState();
+
+}
+
+class RandomWordsState extends State<RandomWords> {
+  @override
+  Widget build(BuildContext context) {
+    final wordPair = new WordPair.random();
+    return new Text(wordPair.asPascalCase);
   }
 }
