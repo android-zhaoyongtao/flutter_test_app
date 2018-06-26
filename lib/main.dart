@@ -1,6 +1,8 @@
 import 'package:english_words/english_words.dart';
 import 'package:flutter/material.dart';
 
+//https://flutterchina.club/get-started/codelab/#第1步-创建-flutter-app
+
 void main() => runApp(new MyApp()); //main函数使用了(=>)符号, 这是Dart中单行函数或方法的简写。
 
 class MyApp extends StatelessWidget {
