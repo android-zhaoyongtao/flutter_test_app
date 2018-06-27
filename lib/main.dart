@@ -44,6 +44,8 @@ class RandomWords extends StatefulWidget {
 }
 
 class RandomWordsState extends State<RandomWords> {
+  final _saved = new Set<WordPair>();
+
   //_suggestions列表以保存建议的单词对。 该变量以下划线（_）开头，在Dart语言中使用下划线前缀标识符，会强制其变成私有的
   final _suggestions = <WordPair>[];
 
@@ -86,11 +88,28 @@ class RandomWordsState extends State<RandomWords> {
   }
 
   Widget _buildRow(WordPair pair) {
+    final alreadySaved = _saved.contains(pair);
     return new ListTile(
+      leading: new Icon(Icons.android),
       title: new Text(
         pair.asPascalCase,
         style: _biggerFont,
       ),
+      //心形2状态图标
+      trailing: new Icon(
+        alreadySaved ? Icons.favorite : Icons.favorite_border,
+        color: alreadySaved ? Colors.red : Colors.grey,
+      ),
+      //点击事件
+      onTap: () {
+        setState(() {
+          if (alreadySaved) {
+            _saved.remove(pair);
+          } else {
+            _saved.add(pair);
+          }
+        });
+      },
     );
   }
 }
