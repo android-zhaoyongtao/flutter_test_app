@@ -13,9 +13,10 @@ class MyApp extends StatelessWidget {
 //    final wordPair = new WordPair.random();
     return new MaterialApp(
       title: 'Welcome to Flutter',
-//      theme: new ThemeData(
-//        primarySwatch: Colors.blue,
-//      ),
+      theme: new ThemeData(
+          primaryColor: Colors.redAccent,
+          accentColor: Colors.amber
+      ),
 //      home: new Scaffold(
 //        //Scaffold 是 Material library 中提供的一个widget, 它提供了默认的导航栏、标题和包含主屏幕widget树的body属性。widget树可以很复杂
 //        appBar: new AppBar(
@@ -70,7 +71,7 @@ class RandomWordsState extends State<RandomWords> {
   //法构建显示建议单词对的ListView
   Widget _buildSuggestions() {
     return new ListView.builder(
-        padding: const EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(1.0),
         // 对于每个建议的单词对都会调用一次itemBuilder，然后将单词对添加到ListTile行中
         // 在偶数行，该函数会为单词对添加一个ListTile row.
         // 在奇数行，该行书湖添加一个分割线widget，来分隔相邻的词对。
