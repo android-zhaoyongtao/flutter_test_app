@@ -57,15 +57,16 @@ class RandomWordsState extends State<RandomWords> {
 //    final wordPair = new WordPair.random();
 //    return new Text(wordPair.asPascalCase);
     return new Scaffold(
-      appBar: new AppBar(title: new Text('Startup Name ListView'),
+      appBar: new AppBar(
+        title: new Text('Startup Name ListView'),
         actions: <Widget>[
-          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved)],),
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved)
+        ],
+      ),
       body: _buildSuggestions(),
     );
   }
 
-  void _pushSaved() {
-  }
   //法构建显示建议单词对的ListView
   Widget _buildSuggestions() {
     return new ListView.builder(
@@ -117,5 +118,28 @@ class RandomWordsState extends State<RandomWords> {
     );
   }
 
-
+  void _pushSaved() {
+    //建立一个路由并将其推入到导航管理器栈中。此操作会切换页面以显示新路由。
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context) {
+      final tiles = _saved.map(
+            (pair) {
+          return new ListTile(
+            title: new Text(
+              pair.asPascalCase,
+              style: _biggerFont,
+            ),
+          );
+        },
+      );
+      final divided = ListTile
+          .divideTiles(tiles: tiles, context: context, color: Colors.green)
+          .toList();
+      return new Scaffold(
+        appBar: new AppBar(
+          title: new Text('保存的 Suggestions'),
+        ),
+        body: new ListView(children: divided),
+      );
+    }));
+  }
 }
