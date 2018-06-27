@@ -57,11 +57,15 @@ class RandomWordsState extends State<RandomWords> {
 //    final wordPair = new WordPair.random();
 //    return new Text(wordPair.asPascalCase);
     return new Scaffold(
-      appBar: new AppBar(title: new Text('Startup Name ListView')),
+      appBar: new AppBar(title: new Text('Startup Name ListView'),
+        actions: <Widget>[
+          new IconButton(icon: new Icon(Icons.list), onPressed: _pushSaved)],),
       body: _buildSuggestions(),
     );
   }
 
+  void _pushSaved() {
+  }
   //法构建显示建议单词对的ListView
   Widget _buildSuggestions() {
     return new ListView.builder(
@@ -112,4 +116,6 @@ class RandomWordsState extends State<RandomWords> {
       },
     );
   }
+
+
 }
