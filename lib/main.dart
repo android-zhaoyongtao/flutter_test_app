@@ -69,7 +69,7 @@ class RandomWordsState extends State<RandomWords> {
         // 在奇数行，该行书湖添加一个分割线widget，来分隔相邻的词对。
         // 注意，在小屏幕上，分割线看起来可能比较吃力。
         itemBuilder: (context, i) {
-          // 在每一列之前，添加一个1像素高的分隔线widget
+          // 如果是奇数,在每一列之前，添加一个1像素高的分隔线widget
           if (i.isOdd) {
             return new Divider(color: Colors.red);
           }
